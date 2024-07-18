@@ -66,7 +66,7 @@ class UserRegistration:
         
         try:
             self.password = input("Enter your password : ")
-            validation= re.match(r"(?=.*[A-Z]){8,}",self.password)
+            validation= re.match(r"(?=.*[A-Z])(?=.*[0-9]){8,}",self.password)
             if not validation:
                 raise ValueError("Invalid password")
             else:

@@ -5,6 +5,7 @@ class UserRegistration:
         self.first_name = None
         self.last_name=None
         self.email=None
+        self.mobile_no=None
 
     def users_first_name(self):
         try:
@@ -45,6 +46,20 @@ class UserRegistration:
         except ValueError as e:
             print(e)
             print(" email has 3 mandatory parts (abc, bl& co) and 2 optional (xyz & in) with precise @ and . positions")
+    
+    def mobile_number(self):
+        # The length of country code varies from 1 to 3 digits
+        try:
+            self.mobile_no = input("Enter your mobile number : ")
+            validation= re.match(r"\d{1,3}\s[0-9]{10}$",self.mobile_no)
+            if not validation:
+                raise ValueError("Invalid mobile number")
+            else:
+                print('registration is successfull')
+                
+        except ValueError as e:
+            print(e)
+            print('you need to write Country code follow by space and 10 digit number')
 
     
     
@@ -52,6 +67,7 @@ class UserRegistration:
         print("1. Enter valid first name ")
         print("2. Enter valid last name ")
         print("3. Enter valid email ")
+        print("4. Enter valid mobile number ")
         user_choice=int(input('enter your choice :'))
         return user_choice
 
@@ -65,6 +81,8 @@ class UserRegistration:
                 self.users_last_name()
             case 3:
                 self.Email()
+            case 4:
+                self.mobile_number()
             
             case _:
                 print("Invalid choice")

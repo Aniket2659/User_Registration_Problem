@@ -3,6 +3,8 @@ import re
 class UserRegistration:
     def __init__(self):
         self.first_name = None
+        self.last_name=None
+        self.email=None
 
     def users_first_name(self):
         try:
@@ -31,9 +33,25 @@ class UserRegistration:
             print(e)
             print('last name must start with a capital letter and have at least 3 characters')
     
+    def Email(self):
+        try:
+            self.email = input("Enter your email : ")
+            validation= re.match(r"^(abc)+\.([a-zA-Z0-9]+)@(bl)\.(co)\.([a-zA-Z0-9]+)$",self.email)
+            if not validation:
+                raise ValueError("Invalid email")
+            else:
+                print('registration is successfull')
+                
+        except ValueError as e:
+            print(e)
+            print(" email has 3 mandatory parts (abc, bl& co) and 2 optional (xyz & in) with precise @ and . positions")
+
+    
+    
     def menu(self):
-        print("1. Enter valid first name :")
-        print("2. Enter valid last name :")
+        print("1. Enter valid first name ")
+        print("2. Enter valid last name ")
+        print("3. Enter valid email ")
         user_choice=int(input('enter your choice :'))
         return user_choice
 
@@ -45,6 +63,9 @@ class UserRegistration:
                 self.users_first_name()
             case 2:
                 self.users_last_name()
+            case 3:
+                self.Email()
+            
             case _:
                 print("Invalid choice")
                 

@@ -10,7 +10,7 @@ class UserRegistration:
 
     def users_first_name(self):
         try:
-            self.first_name = input("Enter your first name: ")
+            self.first_name = input("Enter your first name(First name must start with a capital letter and have at least 3 characters): ")
             validation= re.match(r"^[A-Z][a-zA-Z]{2,}$",self.first_name)
             if not validation:
                 raise ValueError("Invalid first_name")
@@ -24,7 +24,7 @@ class UserRegistration:
 
     def users_last_name(self):
         try:
-            self.last_name = input("Enter your last name: ")
+            self.last_name = input("Enter your last name(last name must start with a capital letter and have at least 3 characters): ")
             validation= re.match(r"^[A-Z][a-zA-Z]{2,}$",self.last_name)
             if not validation:
                 raise ValueError("Invalid last name")
@@ -35,9 +35,9 @@ class UserRegistration:
             print(e)
             print('last name must start with a capital letter and have at least 3 characters')
     
-    def Email(self):
+    def email(self):
         try:
-            self.email = input("Enter your email : ")
+            self.email = input("Enter your email(email has 3 mandatory parts (abc, bl& co) and 2 optional (xyz & in) with precise @ and . positions) : ")
             validation= re.match(r"^(abc)+\.([a-zA-Z0-9]+)@(bl)\.(co)\.([a-zA-Z0-9]+)$",self.email)
             if not validation:
                 raise ValueError("Invalid email")
@@ -51,7 +51,7 @@ class UserRegistration:
     def mobile_number(self):
         # The length of country code varies from 1 to 3 digits
         try:
-            self.mobile_no = input("Enter your mobile number : ")
+            self.mobile_no = input("Enter your mobile number(you need to write Country code follow by space and 10 digit number) : ")
             validation= re.match(r"\d{1,3}\s[0-9]{10}$",self.mobile_no)
             if not validation:
                 raise ValueError("Invalid mobile number")
@@ -65,7 +65,7 @@ class UserRegistration:
     def password_rules(self):
         
         try:
-            self.password = input("Enter your password : ")
+            self.password = input("Enter your password(you need to enter minimum 8 character,minimum 1 uppercase char,minimum 1 digit and exactly 1 special character) : ")
             validation= re.match(r"^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_+=]{1}).{8,}$",self.password)
             if not validation:
                 raise ValueError("Invalid password")
@@ -96,7 +96,7 @@ class UserRegistration:
             case 2:
                 self.users_last_name()
             case 3:
-                self.Email()
+                self.email()
             case 4:
                 self.mobile_number()
             case 5:
